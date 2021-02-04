@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="#">Taco App</b-navbar-brand>
+      <b-navbar-brand href="/">Taco App</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -12,7 +12,9 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item @click="login" v-if="!user">Login</b-nav-item>
+          <b-nav-item @click="login" v-if="!user">
+            <b-icon icon="facebook" class="mr-1"></b-icon>Login
+          </b-nav-item>
           <b-nav-item-dropdown right v-if="user">
             <template #button-content>
               <em>{{user.name}}</em>
@@ -35,6 +37,12 @@ import { authService } from '@/_services';
 
 export default {
   name: 'TacoApp',
+  metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    title: 'TACO App',
+    // all titles will be injected into this template
+    titleTemplate: '%s'
+  },
   data() {
     return {
       user: null

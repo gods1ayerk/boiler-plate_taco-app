@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 // Load routes
 const authRouter = require('./routes/auth.route');
 const userRouter = require('./routes/user.route');
+const recipeRouter = require('./routes/recipe.route');
 
 // Dev Middleware
 if(process.env.NODE_ENV === 'development') {
@@ -27,6 +28,7 @@ if(process.env.NODE_ENV === 'development') {
 // Use Routes
 app.use('/api', authRouter);
 app.use('/api', userRouter);
+app.use('/api', recipeRouter);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, msg: 'Page not found! '});
